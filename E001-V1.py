@@ -14,9 +14,9 @@ class Category:
         self.no_of_products = 0
 
     def Show_Category(self):
-        print("\nCategory Name : {:^4}".format(self.category_name))    
-        print("Category Code : {:^4}".format(self.category_code))    
-        print("No of products : {:^4}".format(self.no_of_products))   
+        print("\nCategory Name : {0}".format(self.category_name))    
+        print("Category Code : {0}".format(self.category_code))    
+        print("No of products : {0}".format(self.no_of_products))   
         
 class Product:
     def __init__(self, product_name, product_code, product_category,product_price):
@@ -37,10 +37,7 @@ class Product:
 
         for i in product_list:
             if i.product_code == input_product_code:
-                print("\nProduct Name : {0}".format(product_list[count].product_name))
-                print("Product Code : {0}".format(product_list[count].product_code))
-                print("Product Category : {0}".format(product_list[count].product_category))
-                print("Product Price : {0}".format(product_list[count].product_price))
+                i.Show_Product()
                 break
             count += 1
         else:
@@ -78,7 +75,6 @@ c1 = Category("veg","vg001")
 c2 = Category("Non-veg","nv001")
 c3 = Category("vegan","ve001")
 
-Category_list = [c1,c2,c3]
         
 # vag 
 product1 = Product("Burger","p01",c1,120)
@@ -94,7 +90,10 @@ product8 = Product("Chikan-Butter-masala","p08",c2,400)
 product9 = Product("Nuts","p09",c3,230)
 product10 = Product("Seaweed","p10",c3,250)
 
-# list of all object
+# list of all Category
+Category_list = [c1,c2,c3]
+
+# list of all all product
 product_list = [product1,product2,product3,product4,product5,product6,product7,product8,product9,product10]
 
 # To print all Category with Category Count
@@ -104,12 +103,12 @@ for i in Category_list:
 
 # Object Calling
 
-# product1.Search()
-# product1.High_to_Low()
-# product1.Low_to_High()
+product1.Search()
+product1.High_to_Low()
+product1.Low_to_High()
 
 
-# to print all Product
+# To print all Product
 # for i in  [product1,product2,product3,product4,product5,product6,product7,product8,product9,product10]:
 #     # print(i.product_name,i.product_code,i.product_category.category_name,i.product_price)
 #     i.Show_Product()
