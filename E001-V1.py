@@ -33,7 +33,7 @@ class Product:
         print("Product Price : {0}".format(self.product_price))
 
     def Search(self,count = 0):
-        input_product_code = input("Enter Product code to search : ")
+        input_product_code = input("\nEnter Product code to search : ")
 
         for i in product_list:
             if i.product_code == input_product_code:
@@ -50,12 +50,10 @@ class Product:
         for i in range(len(product_list)):
             for j in range(i+1,len(product_list)):
                 if product_list[i].product_price < product_list[j].product_price:
-                    temp = product_list[i].product_price
-                    product_list[i].product_price = product_list[j].product_price
-                    product_list[j].product_price = temp
-
-        for i in product_list:
-            i.Show_Product()
+                    temp = product_list[i]
+                    product_list[i] = product_list[j]
+                    product_list[j] = temp
+            product_list[i].Show_Product()
 
     def Low_to_High(self):
 
@@ -64,12 +62,10 @@ class Product:
         for i in range(len(product_list)):
             for j in range(i+1,len(product_list)):
                 if product_list[i].product_price > product_list[j].product_price:
-                    temp = product_list[i].product_price
-                    product_list[i].product_price = product_list[j].product_price
-                    product_list[j].product_price = temp
-
-        for i in product_list:
-            i.Show_Product() 
+                    temp = product_list[i]
+                    product_list[i] = product_list[j]
+                    product_list[j] = temp
+            product_list[i].Show_Product() 
 
 c1 = Category("veg","vg001")
 c2 = Category("Non-veg","nv001")
@@ -82,7 +78,7 @@ product2 = Product("Pizza","p02",c1,250)
 product3 = Product("Paneer-chilly","p03",c1,360)
 product4 = Product("Fride-rice","p04",c1,150)
 # Non-Veg
-product5 = Product("egg","p05",c2,20)
+product5 = Product("Egg","p05",c2,20)
 product6 = Product("Egg-fride-rice","p06",c2,160)
 product7 = Product("Egg-Chizz-roll","p07",c2,260)
 product8 = Product("Chikan-Butter-masala","p08",c2,400)
@@ -106,11 +102,5 @@ for i in Category_list:
 product1.Search()
 product1.High_to_Low()
 product1.Low_to_High()
-
-
-# To print all Product
-# for i in  [product1,product2,product3,product4,product5,product6,product7,product8,product9,product10]:
-#     # print(i.product_name,i.product_code,i.product_category.category_name,i.product_price)
-#     i.Show_Product()
 
           
