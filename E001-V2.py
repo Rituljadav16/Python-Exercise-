@@ -10,7 +10,6 @@
 # •  Display the Category with its Code, Display Name, and all product details inside that category.
 # •  Display product list by category (group by category, order by category name).
 
-
 class Category:
 
     def __init__(self, category_name, category_code,parent = None):
@@ -19,30 +18,33 @@ class Category:
         self.no_of_products = 0
         self.parent = parent
         self.display_name = self.Generate_display_name()
-        self.products = [] 
+        self.products = []
 
     def Generate_display_name(self):
         self.display_name = self.category_name
-
         if self.parent:
-            self.display_name = self.parent.Generate_display_name() + ' > ' + self.display_name
+            self.display_name = self.parent.Generate_display_name() + " > " + self.display_name
+
         return self.display_name
     
-    def Display_Category(self):
-        print("\nCategory Name : {0} ".format(self.category_name))
-        print("Category Code : {0} ".format(self.category_code))
-        print("No of Productes : {0} ".format(self.no_of_products))
-        # print("Parent : {0} ".format(self.parent))
-        print("Display Name : {0} ".format(self.display_name))
-        print("\n - - - - Product Details - - - - \n")
-
+    def __str__(self):
+        if self.parent:
+            return f"\nCategory Name : {self.category_name} \n Category Code : {self.category_code} \n No of Productes : {self.no_of_products} \n Parent Name : {self.parent.category_name} \n Display Name : {self.display_name}  \n"
+        else:
+            return f"Category Name : {self.category_name} \n Category Code : {self.category_code} \n No of Productes : {self.no_of_products} \n Parent Name : None \n Display Name : {self.display_name}  \n"
+            
 
     def Sorting(self,categories_list):
+
+        print("\n  = = = = = = = = = = Sorted Categories  = = = = = = = = = =  \n")
         for i in range(len(categories_list)):
             for j in range(0,len(categories_list)-i-1):
                 if categories_list[j].category_name > categories_list[j+1].category_name:
-                    categories_list[j].category_name,categories_list[j+1].category_name = categories_list[j+1].category_name,categories_list[j].category_name
-
+                    categories_list[j],categories_list[j+1] = categories_list[j+1],categories_list[j]
+        for i in categories_list:
+            print("\n - - - - - - - - - Category : {0} - - - - - - - - - " .format(i.category_name))
+            for j in i.products:
+                j.Display_Product()
 
 class Product:
     def __init__(self, product_name, product_code, product_category,product_price):
@@ -86,13 +88,9 @@ diesel.products.append(Product("Bio","Bd",diesel,65))
 
 categories_list = [vehicle, car, bike, petrol, diesel]
 
+for i in categories_list:
+    print(i)
+
 vehicle.Sorting(categories_list)
 
-for i in categories_list:
-    print(i.display_name)
 
-for i in categories_list:
-    print("\n - - - - - - - - - Category : {0} - - - - - - - - - " .format(i.category_name))
-    i.Display_Category()
-    for j in i.products:
-        j.Display_Product()
