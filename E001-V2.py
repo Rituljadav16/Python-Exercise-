@@ -38,11 +38,12 @@ class Category:
 
         print("\n  = = = = = = = = = = Sorted Categories  = = = = = = = = = =  \n")
         for i in range(len(categories_list)):
-            for j in range(0,len(categories_list)-i-1):
+            for j in range(0,len(categories_list)-1):
                 if categories_list[j].category_name > categories_list[j+1].category_name:
                     categories_list[j],categories_list[j+1] = categories_list[j+1],categories_list[j]
         for i in categories_list:
             print("\n - - - - - - - - - Category : {0} - - - - - - - - - " .format(i.category_name))
+            print(i)
             for j in i.products:
                 j.Display_Product()
 
