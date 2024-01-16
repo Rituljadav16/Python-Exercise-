@@ -54,32 +54,31 @@ Pune = Location("Pune","pun04")
 location_list = [Rajkot,Ahemdabad,Mumbai,Pune]
 
 # Product Objects
-Phone = Product("Phone","pho",{Rajkot.name : 10,Ahemdabad.name:20})
-Laptop = Product("Laptop","lap",{Mumbai.name:10,Rajkot.name:15})
-Watch = Product("Watch","wat",{Mumbai.name:15,Ahemdabad.name:20})
-Shoes = Product("Shoes","sho",{Ahemdabad.name:15,Pune.name:20})
-TShirt = Product("Tshirt","tsh",{Pune.name:50,Mumbai.name:10})
+Phone = Product("Phone","pho",{Rajkot.name : 10})
+Laptop = Product("Laptop","lap",{Ahemdabad.name:10})
+Watch = Product("Watch","wat",{Mumbai.name:15})
+Shoes = Product("Shoes","sho",{Ahemdabad.name:15})
+TShirt = Product("Tshirt","tsh",{Pune.name:50})
 
 product_list = [Phone,Laptop,Watch,Shoes,TShirt]
 
 # Movement object
-m1 = Movement(Rajkot,Ahemdabad,Phone,5)
+m1 = Movement(Rajkot,Ahemdabad,Phone,10)
 m2 = Movement(Ahemdabad,Mumbai,Laptop,2)
-m3 = Movement(Pune,Rajkot,Watch,4)
-m4 = Movement(Mumbai,Ahemdabad,Shoes,8)
-m5 = Movement(Ahemdabad,Rajkot,TShirt,10)
+m3 = Movement(Mumbai,Pune,Watch,4)
+m4 = Movement(Ahemdabad,Rajkot,Shoes,8)
+m5 = Movement(Pune,Rajkot,TShirt,10)
 
 movements = []
 
-# for i in product_list:
-#     print(f"{i.product_name} : {i.stock_at_locations}\n")
 
 try:
-    product_list[0].Move(m5)
-    product_list[1].Move(m1)
-    product_list[2].Move(m2)
-    product_list[3].Move(m3)
-    product_list[4].Move(m4)
+    product_list[0].Move(m1)
+    product_list[1].Move(m2)
+    product_list[2].Move(m3)
+    product_list[3].Move(m4)
+    product_list[4].Move(m5)
+
 except ValueError as e:
     print(e)
 
