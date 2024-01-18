@@ -63,9 +63,6 @@ class OrderLine:
         self.price = price
         self.subtotal = self.quantity * self.price
     
-    # def Calculate_subtotal(self):
-    #     return self.quantity * self.price
-    
     def Display_Orderline(self):
         print(f"\nOrder : {self.order}")
         print(f"Product : {self.product}")
